@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Purple Calc Pro</title>
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#7d52a8">
+    <style>
+        body { background-color: #f0f0f5; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; font-family: sans-serif; }
+        .calculator { background: #000; padding: 20px; border-radius: 35px; width: 320px; }
+        #display { width: 100%; height: 80px; font-size: 50px; text-align: right; border: none; background: transparent; color: white; margin-bottom: 10px; padding-right: 10px; box-sizing: border-box; }
+        .buttons { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+        button { height: 65px; width: 65px; border-radius: 50%; border: none; font-size: 24px; cursor: pointer; }
+        .btn-num { background-color: #333; color: white; }
+        .btn-op { background-color: #7d52a8; color: white; }
+        .btn-special { background-color: #a5a5a5; color: black; }
+        .zero { grid-column: span 2; width: 142px; border-radius: 35px; text-align: left; padding-left: 25px; }
+    </style>
+</head>
+<body>
+
+<div class="calculator">
+    <input type="text" id="display" disabled value="0">
+    <div class="buttons">
+        <button class="btn-special" onclick="clearDisplay()">AC</button>
+        <button class="btn-special" onclick="deleteLast()">DEL</button>
+        <button class="btn-special" onclick="appendValue('%')">%</button>
+        <button class="btn-op" onclick="appendValue('/')">÷</button>
+        <button class="btn-num" onclick="appendValue('7')">7</button>
+        <button class="btn-num" onclick="appendValue('8')">8</button>
+        <button class="btn-num" onclick="appendValue('9')">9</button>
+        <button class="btn-op" onclick="appendValue('*')">×</button>
+        <button class="btn-num" onclick="appendValue('4')">4</button>
+        <button class="btn-num" onclick="appendValue('5')">5</button>
+        <button class="btn-num" onclick="appendValue('6')">6</button>
+        <button class="btn-op" onclick="appendValue('-')">−</button>
+        <button class="btn-num" onclick="appendValue('1')">1</button>
+        <button class="btn-num" onclick="appendValue('2')">2</button>
+        <button class="btn-num" onclick="appendValue('3')">3</button>
+        <button class="btn-op" onclick="appendValue('+')">+</button>
+        <button class="btn-num zero" onclick="appendValue('0')">0</button>
+        <button class="btn-num" onclick="appendValue('.')">.</button>
+        <button class="btn-op" style="background-color: #5a3a8a;" onclick="calculate()">=</button>
+    </div>
+</div>
+
+<script>
+    // Calculator Logic
+    let display = document.getElementById('display');
+    function appendValue(v) { if(display.value === '0') display.value = v; else display.value += v; }
+    function clearDisplay() { display.value = '0'; }
+    function deleteLast() { display.value = display.value.slice(0, -1) || '0'; }
+    function calculate() { try { display.value = eval(display.value.replace('×', '*').replace('÷', '/')); } catch { display.value = "Error"; } }
+
+    // PWA Service Worker Registration
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('sw.js');
+    }
+</script>
+</body>
+</html>

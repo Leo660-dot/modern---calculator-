@@ -1,0 +1,15 @@
+{
+  "name": "Purple Calculator Pro",
+  "short_name": "CalcPro",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#7d52a8",
+  "icons": [
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/531/531069.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
