@@ -1,15 +1,16 @@
 {
-  "name": "Purple Calculator Pro",
-  "short_name": "CalcPro",
+  "name": "Modern Calculator", 
+  "short_name": "Modern Calculate",
   "start_url": "index.html",
   "display": "standalone",
   "background_color": "#000000",
   "theme_color": "#7d52a8",
   "icons": [
     {
-      "src": "https://cdn-icons-png.flaticon.com/512/531/531069.png",
+      "src": "https://cdn-icons-png.flaticon.com/512/2344/2344132.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     }
   ]
 }
